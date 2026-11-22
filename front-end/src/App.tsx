@@ -1,3 +1,6 @@
+import { CustomersList } from './components/CustomersList'
+import { customers } from './data/customers'
+
 function App() {
   return (
     <>
@@ -9,9 +12,7 @@ function App() {
 
       <main className="container py-4">
         <h2 className="h5 mb-3">Clientes</h2>
-        <p className="text-secondary">
-          A listagem de clientes será exibida aqui.
-        </p>
+        <CustomersList list={customers} />
       </main>
     </>
   )

@@ -1,6 +1,5 @@
 import { prisma } from '../database/client.ts'
-import type { CreateProcessDTO, UpdateProcessDTO } from '../dtos/process.dto.ts'
-
+import type { CreateProcessDTO, UpdateProcessDTO } from '../dto/process/process.dto.ts'
 export const processRepository = {
   create(data: CreateProcessDTO) {
     return prisma.process.create({ data })
@@ -27,5 +26,4 @@ export const processRepository = {
   delete(id: number) {
     return prisma.process.delete({ where: { id } })
   },
-}
 }
