@@ -1,9 +1,9 @@
-export class NotFoundError extends Error {
-  public readonly statusCode: number;
+import { AppError } from './AppError.ts'
 
-  constructor(message: string, statusCode = 404) {
-    super(message);
-    this.name = "NotFoundError";
-    this.statusCode = statusCode;
-  }
+
+export class NotFoundError extends AppError {
+ constructor(message = 'Recurso não encontrado.') {
+   super(message, 404)
+   this.name = 'NotFoundError'
+ }
 }
