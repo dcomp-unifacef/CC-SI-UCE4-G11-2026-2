@@ -1,7 +1,7 @@
 export interface CreateCustomerDto {
  name: string;
  ident_document: string;
- phone: String;
+ phone: string;
  email: string;
  street_name: string;
  house_number: string;
