@@ -3,26 +3,42 @@ generator client {
  output   = "../generated/prisma"
 }
 
-
 datasource db {
  provider = "postgresql"
 }
 
-
-/*
- O nome de um model no Prisma:
- * deve iniciar com letra maiúscula
- * deve estar no singular
-*/
 model Customer {
- id             Int        @id @default(autoincrement())  // Chave primária, autoincremental
- name           String               // Nome do cliente
- ident_document String     @unique   // Documento de identidade (usaremos o CPF)
- phone         String               // Telefone/celular
- email          String     @unique  // E-mail
- street_name    String               // Nome da rua do endereço
- house_number   String               // Número da casa
- district       String               // Bairro
- municipality   String               // Município
- state          String     @db.Char(2)// UF
+ id             Int        @id @default(autoincrement())
+ name           String
+ ident_document String     @unique
+ phone          String
+ email          String     @unique
+ street_name    String
+ house_number   String
+ complements    String?
+ district       String
+ municipality   String
+ state          String     @db.Char(2)
+
+ processes      Process[]
+}
+
+model Process {
+ id                Int       @id @default(autoincrement())
+ process_number    String    @unique
+ start_date        DateTime  @db.Date
+ court_number      String
+ car_brand         String
+ car_model         String
+ car_color         String
+ car_plates        String
+ car_year          Int
+ receipt_chance    String
+ current_status    String
+ has_active_action Boolean
+ case_summary      String
+ notes             String?
+
+ customer_id       Int
+ customer          Customer @relation(fields: [customer_id], references: [id])
 }
