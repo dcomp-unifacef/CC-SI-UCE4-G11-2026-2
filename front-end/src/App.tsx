@@ -4,6 +4,7 @@ import { Homepage } from './components/Homepage'
 import { CustomersList } from './components/CustomersList'
 import { CarsList } from './components/ProcessList'
 import { CustomersForm } from './components/CustomerForm'
+import { ProcessForm } from './components/ProcessForm'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <nav className="bg-light border-bottom py-2">
         <div className="container">
           <ul className="nav nav-pills">
+
             <li className="nav-item">
               <NavLink to="/" className="nav-link" end>
                 Início
@@ -36,35 +38,44 @@ function App() {
                 Processos
               </NavLink>
             </li>
+
           </ul>
         </div>
       </nav>
 
       <main className="container py-4">
         <Routes>
+
           <Route
             path="/"
             element={<Homepage />}
           />
 
-          <Route path="/customers/:id" element={<CustomersForm />} />
-
           <Route
             path="/customers"
-            element={
-              <>
-                <h2 className="h5 mb-3">Clientes</h2>
-                <div className="text-secondary">
-                  <CustomersList />
-                </div>
-              </>
-            }
+            element={<CustomersList />}
+          />
+
+          <Route
+            path="/customers/:id"
+            element={<CustomersForm />}
           />
 
           <Route
             path="/process"
-            element={<CarsList  />}
+            element={<CarsList />}
           />
+
+          <Route
+            path="/process/new"
+            element={<ProcessForm />}
+          />
+
+          <Route
+            path="/process/:id"
+            element={<ProcessForm />}
+          />
+
         </Routes>
       </main>
     </BrowserRouter>

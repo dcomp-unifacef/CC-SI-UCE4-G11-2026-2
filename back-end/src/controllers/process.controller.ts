@@ -20,7 +20,7 @@ export const processController = {
       const processes = await processService.list()
       res.json(processes)
     } catch (error) {
-      console.error(error)
+      console.dir(error, { depth: null })
       res.status(500).json({ message: 'Erro ao listar processos' })
     }
   },
