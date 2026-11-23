@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { Customer } from '../types/Customer'
+import { Link } from 'react-router'
 
 
 type CustomerListProps = {
@@ -83,6 +84,14 @@ export function CustomersList() {
        Total de clientes: {customers.length}
      </p>
 
+     <div className="text-end mb-3">
+       <Link
+         to={`/customers/new`}
+         className="btn btn-outline-primary"
+       >
+         Novo cliente
+       </Link>
+     </div>
 
      <div className="table-responsive">
        <table className="table table-striped table-hover align-middle">
@@ -96,6 +105,7 @@ export function CustomersList() {
              <th scope="col">Endereço</th>
              <th scope="col">Cidade</th>
              <th scope="col">UF</th>
+             <th scope="col" className="text-end">Ações</th>
            </tr>
          </thead>
 
@@ -111,13 +121,22 @@ export function CustomersList() {
                <td>{list.address}</td>
                <td>{list.city}</td>
                <td>{list.state}</td>
+               <td className="text-end">
+                 <Link
+                   to={`/customers/${list.id}`}
+                   className="btn btn-outline-primary"
+                   aria-label={`Editar cliente ${list.name}`}
+                 >
+                   Editar
+                 </Link>
+               </td>
              </tr>
            ))}
 
 
            {customers.length === 0 && (
              <tr>
-               <td colSpan={7} className="text-center text-secondary">
+               <td colSpan={9} className="text-center text-secondary">
                  Nenhum cliente cadastrado.
                </td>
              </tr>

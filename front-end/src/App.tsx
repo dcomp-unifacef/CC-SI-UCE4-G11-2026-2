@@ -3,6 +3,7 @@ import { BrowserRouter, NavLink, Routes, Route } from 'react-router'
 import { Homepage } from './components/Homepage'
 import { CustomersList } from './components/CustomersList'
 import { CarsList } from './components/ProcessList'
+import { CustomersForm } from './components/CustomerForm'
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
             element={<Homepage />}
           />
 
+          <Route path="/customers/:id" element={<CustomersForm />} />
+
           <Route
             path="/customers"
             element={
@@ -60,7 +63,7 @@ function App() {
 
           <Route
             path="/process"
-            element={<CarsList />}
+            element={<CarsList  />}
           />
         </Routes>
       </main>
